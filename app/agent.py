@@ -1,8 +1,9 @@
 from google import genai
 from PIL import Image
-from prompts import PROMPT
+from app.prompts import PROMPT
 import requests
 import io
+import os
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
