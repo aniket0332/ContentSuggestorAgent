@@ -1,9 +1,19 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
-from app.agent import process_image_urls
+from agent import process_image_urls
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # for now
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+);
 
 class ImageRequest(BaseModel):
     image_urls: List[str]
